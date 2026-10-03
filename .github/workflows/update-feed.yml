@@ -22,8 +22,8 @@ jobs:
 
       - name: Generate feed
         env:
-          FEED_SELF_LINK: https://yourusername.github.io/conference-feed/feed.xml
-          ITUNES_IMAGE: https://yourusername.github.io/conference-feed/cover.jpg
+          FEED_SELF_LINK: https://davidcstevens.github.io/general-conference-feed/feed.xml
+          ITUNES_IMAGE: https://davidcstevens.github.io/general-conference-feed/cover.jpg
         run: python generate.py
 
       - name: Commit & push if changed

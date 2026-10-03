@@ -7,7 +7,7 @@ FEED_DESCRIPTION = "Audio recordings from The Church of Jesus Christ of Latter-d
 FEED_LINK = "https://www.churchofjesuschrist.org/study/general-conference?lang=eng"
 FEED_LANG = "en"
 FEED_AUTHOR = "The Church of Jesus Christ of Latter-day Saints"
-FEED_SELF_LINK = os.environ.get("FEED_SELF_LINK", "https://yourusername.github.io/conference-feed/feed.xml")
+FEED_SELF_LINK = os.environ.get("FEED_SELF_LINK", "https://davidcstevens.github.io/general-conference-feed/feed.xml")
 ITUNES_IMAGE = os.environ.get("ITUNES_IMAGE", "")
 
 RSS_TEMPLATE = """<?xml version="1.0" encoding="UTF-8"?>
