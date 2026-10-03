@@ -1,0 +1,39 @@
+name: Update General Conference Podcast Feed
+
+on:
+  schedule:
+    - cron: '0 9 1 4,10 *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Generate feed
+        env:
+          FEED_SELF_LINK: https://yourusername.github.io/conference-feed/feed.xml
+          ITUNES_IMAGE: https://yourusername.github.io/conference-feed/cover.jpg
+        run: python generate.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed.xml
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: update GC podcast feed"
+            git push
+          fi
